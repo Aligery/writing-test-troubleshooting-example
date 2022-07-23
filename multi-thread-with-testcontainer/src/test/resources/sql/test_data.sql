@@ -1,0 +1,1 @@
+INSERT INTO account(id, account_number, sum_money_rub, user_id, created_at) values (1, 1234, 100000, 4321, now());
