@@ -1,0 +1,29 @@
+spring:
+  flyway:
+    enabled: true
+  application:
+    name: ${APP_NAME:no-test-container}
+  profiles:
+    active: ${APP_PROFILE:dev}
+  mvc:
+    throw-exception-if-no-handler-found: true
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: ${DATABASE_JDBC_URL:jdbc:postgresql://localhost:5432/testdb}
+    username: ${POSTGRES_USERNAME:root}
+    password: ${POSTGRES_PASSWORD:root}
+    hikari:
+      minimum-idle: ${DATASOURCE_MINIMUM_CONNECTION:20}
+      maximum-pool-size: ${DATASOURCE_MAXIMUM_POOL_SIZE:150}
+      pool-name: ${DATASOURCE_POOLNAME:payondemand-core-datasource-pool}
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQL95Dialect
+        open-in-view: false
+    show-sql: true
+    hibernate:
+      ddl-auto: validate
+  web:
+    locale-resolver: accept_header
+    locale: ${DEFAULT_HEADER_ENCODING:ru_RU}
